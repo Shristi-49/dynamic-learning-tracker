@@ -45,15 +45,24 @@ const LeftNav = ({ drawerOpen }) => {
       <Box sx={{ overflow: "auto" }}>
         <List>
           {navItems.map((item) => (
-            <ListItem
-              button
-              key={item.label}
-              onClick={() => navigate(item.path)}
-              selected={location.pathname === item.path}
-            >
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              {drawerOpen && <ListItemText primary={item.label} />}
-            </ListItem>
+           <ListItem
+  button
+  key={item.label}
+  onClick={() => navigate(item.path)}
+  selected={location.pathname === item.path}
+  sx={{
+    borderRadius: 2,
+    mx: 1,
+    my: 0.5,
+    backgroundColor: location.pathname === item.path ? "#f0f0f0" : "transparent",
+    '&:hover': {
+      backgroundColor: "#e0e0e0",
+    },
+  }}
+>
+  <ListItemIcon sx={{ color: "#555" }}>{item.icon}</ListItemIcon>
+  {drawerOpen && <ListItemText primary={item.label} />}
+</ListItem>
           ))}
         </List>
       </Box>

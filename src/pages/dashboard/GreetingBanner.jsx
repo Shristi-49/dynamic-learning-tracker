@@ -15,16 +15,13 @@ const GreetingBanner = ({ username }) => {
       }}
     >
       <Box>
-        <Typography variant="h5">Hi, {username} 👋</Typography>
+        <Typography variant="h5">Hi, {username}!</Typography>
         <Typography variant="subtitle1">
-          Welcome to the Dynamic Learning Partner Dashboard
+          Welcome to SkillOps, 
+          Your personal dashboard for continuous growth and smarter learning.
         </Typography>
       </Box>
-      <Avatar
-        alt={username}
-        src={`https://i.pravatar.cc/150?u=${username.toLowerCase()}`}
-        sx={{ width: 60, height: 60 }}
-      />
+
     </Box>
   );
 };
