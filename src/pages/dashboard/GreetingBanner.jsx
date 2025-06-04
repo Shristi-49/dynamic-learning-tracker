@@ -1,4 +1,4 @@
-import { Box, Typography, Avatar } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const GreetingBanner = ({ username }) => {
   return (

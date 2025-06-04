@@ -4,9 +4,9 @@ import CourseGrid from "./CourseGrid";
 import {
   getGoals,
   addGoal,
-  updateGoal
+  updateGoal,
+  getCourses
 } from "../../api/Services";
-import axios from "axios";
 
 const Dashboard = () => {
   const [username] = useState("Shristi");
@@ -16,10 +16,10 @@ const Dashboard = () => {
   useEffect(() => {
     (async () => {
       const [coursesRes, goalsRes] = await Promise.all([
-        axios.get("http://localhost:3001/api/courses"),
+        getCourses(),
         getGoals()
       ]);
-      setAvailableCourses(coursesRes.data);
+      setAvailableCourses(coursesRes);
       setEnrolledGoals(goalsRes);
     })();
   }, []);
