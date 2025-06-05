@@ -4,7 +4,10 @@ const goalSchema = new mongoose.Schema({
   title: { type: String, required: true },
   category: { type: String },
   description: { type: String },
-  progress: { type: Number, default: 0 },
+  progress: {
+   currentModule: { type: Number, default: 1 },
+   completedModules: { type: [Number], default: [] },
+  },
   favorite: { type: Boolean, default: false },
 }, { timestamps: true });
 

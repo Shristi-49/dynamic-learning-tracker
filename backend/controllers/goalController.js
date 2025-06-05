@@ -38,3 +38,21 @@ exports.deleteGoal = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.updateProgress = async (req, res) => {
+  const { moduleIndex } = req.body;
+  try {
+    const goal = await Goal.findById(req.params.id);
+    if (!goal) return res.status(404).json({ error: 'Goal not found' });
+
+    goal.progress.currentModule = moduleIndex;
+    if (!goal.progress.completedModules.includes(moduleIndex - 1)) {
+      goal.progress.completedModules.push(moduleIndex - 1);
+    }
+
+    await goal.save();
+    res.json(goal.progress);
+  } catch (err) {
+    res.status(500).json({ error: 'Could not update progress' });
+  }
+}
