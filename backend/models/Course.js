@@ -1,9 +1,17 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+
+const moduleSchema = new mongoose.Schema({
+  index: Number,
+  title: String,
+  content: String, // Markdown or HTML
+  videoUrl: String,
+});
 
 const courseSchema = new mongoose.Schema({
   title: String,
-  icon: String,
+  slug: { type: String, unique: true }, 
   description: String,
-}, { timestamps: true });
+  modules: [moduleSchema],
+});
 
-module.exports = mongoose.model("Course", courseSchema);
+module.exports = mongoose.model('Course', courseSchema);
