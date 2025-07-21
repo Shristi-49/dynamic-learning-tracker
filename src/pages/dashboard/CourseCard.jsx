@@ -8,9 +8,11 @@ import {
   Tooltip,
   Button
 } from "@mui/material";
+import {useNavigate} from "react-router-dom";
 import { Star, StarBorder } from "@mui/icons-material";
 
 const CourseCard = ({ course, onRegister, onToggleFavorite }) => {
+  const navigate = useNavigate();
   return (
 <Card
   sx={{
@@ -24,7 +26,7 @@ const CourseCard = ({ course, onRegister, onToggleFavorite }) => {
   }}
 >
       <CardContent>
-        <Box display="flex" alignItems="center" justifyContent="space-between">
+        <Box onClick={()=> navigate(`/course/${course.slug}`)} display="flex" alignItems="center" justifyContent="space-between">
           <Typography variant="h6" display="flex" alignItems="center" gap={1}>
             {course.icon} {course.title}
           </Typography>
