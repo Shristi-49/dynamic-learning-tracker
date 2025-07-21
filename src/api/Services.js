@@ -31,3 +31,8 @@ export const getCourses = async () => {
   const res = await axios.get(coursesService);
   return res.data;
 };
+
+export const fetchCourseBySlug = async (slug) => {
+  const res = await axios.get(`${coursesService}/${slug}`);
+  return res.data;
+}
